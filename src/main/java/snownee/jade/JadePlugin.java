@@ -25,6 +25,7 @@ import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.passive.horse.AbstractChestedHorseEntity;
 import net.minecraft.entity.passive.horse.AbstractHorseEntity;
 import net.minecraft.util.ResourceLocation;
+import snownee.jade.addon.vanilla.AnimalOwnerProvider;
 import snownee.jade.addon.vanilla.AgeableEntityProvider;
 import snownee.jade.addon.vanilla.ArmorStandProvider;
 import snownee.jade.addon.vanilla.BeehiveProvider;
@@ -174,6 +175,9 @@ public class JadePlugin implements IWailaPlugin {
 
 		registrar.registerComponentProvider(ItemTooltipProvider.INSTANCE, TooltipPosition.BODY, ItemEntity.class);
 		registrar.addConfig(ITEM_TOOLTIP, true);
+
+		registrar.registerEntityDataProvider(AnimalOwnerProvider.INSTANCE, Entity.class);
+		registrar.registerComponentProvider(AnimalOwnerProvider.INSTANCE, TooltipPosition.BODY, Entity.class);
 	}
 
 }

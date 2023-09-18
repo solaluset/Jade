@@ -62,5 +62,6 @@
   "config.waila.plugin_jade.profession": "Villager Profession",
   "config.waila.plugin_jade.show_entity_armor": "Entity Armor",
   "config.waila.plugin_jade.item_tooltip": "Item Tooltip",
-  "jade.spawner": "%s (%s)"
+  "jade.spawner": "%s (%s)",
+  "jade.owner": "Owner: %s"
 }

@@ -84,6 +84,7 @@ public class JadePlugin implements IWailaPlugin {
 	public static final ResourceLocation PLAYER_HEAD = RL("player_head");
 	public static final ResourceLocation PROFESSION = RL("profession");
 	public static final ResourceLocation ITEM_TOOLTIP = RL("item_tooltip");
+	public static final ResourceLocation ANIMAL_OWNER = RL("animal_owner");
 
 	@Override
 	public void register(IRegistrar registrar) {
@@ -94,6 +95,10 @@ public class JadePlugin implements IWailaPlugin {
 		registrar.registerComponentProvider(BrewingStandProvider.INSTANCE, TooltipPosition.BODY, BrewingStandBlock.class);
 		registrar.registerBlockDataProvider(BrewingStandProvider.INSTANCE, BrewingStandBlock.class);
 		registrar.addConfig(BREWING_STAND, true);
+
+		registrar.registerEntityDataProvider(AnimalOwnerProvider.INSTANCE, Entity.class);
+		registrar.registerComponentProvider(AnimalOwnerProvider.INSTANCE, TooltipPosition.BODY, Entity.class);
+		registrar.addConfig(ANIMAL_OWNER, true);
 
 		registrar.registerComponentProvider(HorseProvider.INSTANCE, TooltipPosition.BODY, AbstractHorseEntity.class);
 		registrar.addConfig(HORSE_STAT, true);
@@ -175,9 +180,6 @@ public class JadePlugin implements IWailaPlugin {
 
 		registrar.registerComponentProvider(ItemTooltipProvider.INSTANCE, TooltipPosition.BODY, ItemEntity.class);
 		registrar.addConfig(ITEM_TOOLTIP, true);
-
-		registrar.registerEntityDataProvider(AnimalOwnerProvider.INSTANCE, Entity.class);
-		registrar.registerComponentProvider(AnimalOwnerProvider.INSTANCE, TooltipPosition.BODY, Entity.class);
 	}
 
 }

@@ -18,6 +18,7 @@ import mcp.mobius.waila.api.IEntityComponentProvider;
 import mcp.mobius.waila.api.IServerDataProvider;
 import mcp.mobius.waila.api.IPluginConfig;
 import snownee.jade.util.UsernameCache;
+import snownee.jade.JadePlugin;
 
 public enum AnimalOwnerProvider implements IEntityComponentProvider, IServerDataProvider<Entity> {
 
@@ -25,6 +26,10 @@ public enum AnimalOwnerProvider implements IEntityComponentProvider, IServerData
 
 	@Override
 	public void appendBody(List<ITextComponent> tooltip, IEntityAccessor accessor, IPluginConfig config) {
+		if (!config.get(JadePlugin.ANIMAL_OWNER)) {
+			return;
+		}
+
 		String name;
 		if (accessor.getServerData().contains("OwnerName")) {
 			name = accessor.getServerData().getString("OwnerName");
@@ -38,7 +43,7 @@ public enum AnimalOwnerProvider implements IEntityComponentProvider, IServerData
 				name = "???";
 			}
 		}
-		tooltip.add(1, new TranslationTextComponent("jade.owner", TextFormatting.YELLOW + name));
+		tooltip.add(new TranslationTextComponent("jade.owner", TextFormatting.YELLOW + name));
 	}
 
 	@Override
